@@ -1,0 +1,150 @@
+.aries-footer {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 20px 10px;
+    font-family: Arial, sans-serif;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+  }
+  
+  .aries-footer__content {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .aries-footer__section {
+    margin-bottom: 20px;
+  }
+  
+  .aries-footer__logo {
+    max-width: 100px;
+    height: auto;
+    margin-bottom: 15px;
+  }
+  
+  .aries-footer__heading {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #f8f8f8;
+  }
+  
+  .aries-footer__list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .aries-footer__list-item {
+    margin-bottom: 6px;
+  }
+  
+  .aries-footer__link {
+    color: #cccccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 14px;
+  }
+  
+  .aries-footer__link:hover {
+    color: #ffffff;
+  }
+  
+  .aries-footer__contact-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 14px;
+  }
+  
+  .aries-footer__icon {
+    margin-right: 8px;
+  }
+  
+  .aries-footer__social-icons {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .aries-footer__social-link {
+    font-size: 20px;
+    color: #cccccc;
+    transition: color 0.3s ease;
+  }
+  
+  .aries-footer__social-link:hover {
+    color: #ffffff;
+  }
+  
+  .aries-footer__bottom {
+    text-align: center;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #333333;
+  }
+  
+  .aries-footer__copyright {
+    font-size: 12px;
+    color: #cccccc;
+  }
+  
+  /* Tablet and larger */
+  @media (min-width: 768px) {
+    .aries-footer {
+      padding: 30px 20px;
+    }
+  
+    .aries-footer__content {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  
+    .aries-footer__section {
+      flex: 1 1 calc(50% - 20px);
+      max-width: calc(50% - 20px);
+    }
+  
+    .aries-footer__logo {
+      max-width: 120px;
+    }
+  
+    .aries-footer__heading {
+      font-size: 18px;
+    }
+  
+    .aries-footer__link,
+    .aries-footer__contact-info {
+      font-size: 15px;
+    }
+  }
+  
+  /* Desktop */
+  @media (min-width: 1024px) {
+    .aries-footer {
+      padding: 40px 20px;
+    }
+  
+    .aries-footer__section {
+      flex: 1 1 calc(25% - 20px);
+      max-width: calc(25% - 20px);
+    }
+  
+    .aries-footer__logo {
+      max-width: 150px;
+    }
+  
+    .aries-footer__heading {
+      font-size: 20px;
+    }
+  
+    .aries-footer__link,
+    .aries-footer__contact-info {
+      font-size: 16px;
+    }
+  
+    .aries-footer__social-link {
+      font-size: 24px;
+    }
+  }

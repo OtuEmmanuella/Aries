@@ -1,0 +1,32 @@
+/* Assuming your navbar height is 60px. Adjust this value if your navbar has a different height */
+:root {
+    --navbar-height: 60px;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .main-content {
+    flex-grow: 1;
+    padding-top: var(--navbar-height);
+    /* Add a bit extra padding for visual breathing room */
+    padding-top: calc(var(--navbar-height) + 20px);
+  }
+  
+  /* Your existing navbar styles */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--navbar-height);
+    /* Other navbar styles */
+  }

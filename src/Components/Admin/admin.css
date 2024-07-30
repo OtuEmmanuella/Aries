@@ -1,0 +1,559 @@
+/* Modern Admin Dashboard Styles */
+
+.dashboard-container {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #f8f8f8;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 80px;
+  }
+  
+  .dashboard-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 20px;
+  }
+  
+  /* Navigation */
+  .dashboard-container nav {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .dashboard-container nav a {
+    text-decoration: none;
+    color: #555;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+    position: relative;
+  }
+  
+  .dashboard-container nav a:hover {
+    color: #000;
+  }
+  
+  .dashboard-container nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+  
+  .dashboard-container nav a:hover::after {
+    transform: scaleX(1);
+  }
+  
+  /* Admin Product Cards */
+  .Adminproduct-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  .Adminproduct-card {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+  }
+  
+  .Adminproduct-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  }
+  
+  .Adminproduct-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .Adminproduct-info {
+    padding: 10px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .Adminproduct-name {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .Adminproduct-description {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 5px;
+    flex-grow: 1;
+    overflow: hidden;
+    display: block;
+    max-height: 2.4em; /* Approximately 2 lines of text */
+    line-height: 1.2em;
+    position: relative;
+  }
+  
+  .Adminproduct-description::after {
+    content: '...';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    padding-left: 4px;
+  }
+  
+  .Adminproduct-price {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 5px;
+  }
+  
+  .Adminproduct-category,
+  .Adminproduct-subcategory {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 3px;
+  }
+  
+  .Adminproduct-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+  }
+  
+  .Adminproduct-actions .action-button {
+    flex: 1;
+    margin: 0 3px;
+    padding: 6px 8px;
+    font-size: 11px;
+  }
+  
+  .action-button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    border: 0.5px solid #000;
+  }
+  
+  .action-button::before,
+  .action-button::after {
+    content: none;
+  }
+  
+  .action-button.edit {
+    background-color: #000;
+  }
+  
+  .action-button.delete {
+    background-color: rgba(128, 128, 128, 0.172);
+  }
+  
+  .trash {
+    color: #000;
+  }
+  
+  .action-button:hover {
+    opacity: 0.9;
+  }
+  
+  /* Form Styles */
+  .modern-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 0 auto 30px;
+  }
+  
+  .modern-form input[type="text"],
+  .modern-form input[type="number"],
+  .modern-form input[type="file"],
+  .modern-form textarea,
+  .modern-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .modern-form input[type="text"]:focus,
+  .modern-form input[type="number"]:focus,
+  .modern-form textarea:focus,
+  .modern-form select:focus {
+    border-color: #000;
+    outline: none;
+  }
+  
+  /* Table Styles for Orders and Users Sections */
+  .modern-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  
+  .modern-table th,
+  .modern-table td {
+    padding: 12px 15px;
+    text-align: left;
+  }
+  
+  .modern-table thead {
+    background-color: #f4f4f4;
+  }
+  
+  .modern-table th {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: #333;
+  }
+  
+  .modern-table tbody tr:nth-child(even) {
+    background-color: #f8f8f8;
+  }
+  
+  .modern-table tbody tr:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* Sales Report Styles */
+  .sales-report {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  
+  .total-revenue {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #000;
+  }
+  
+  .monthly-sales {
+    margin-top: 30px;
+  }
+  
+  /* Toast Notifications */
+  .Toastify__toast {
+    border-radius: 4px;
+    font-size: 12px;
+  }
+  
+  .Toastify__toast--success {
+    background-color: #2ecc71;
+  }
+  
+  .Toastify__toast--error {
+    background-color: #e74c3c;
+  }
+  
+  /* Loading Indicator */
+  .loading-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+  }
+  
+  .loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+  }
+
+
+  .table-responsive {
+    overflow-x: auto;
+  }
+  
+  .loading-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+  }
+  
+  .loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+  }
+
+  .users-section {
+    margin-bottom: 2rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  .table-responsive {
+    overflow-x: auto;
+  }
+  
+  .users-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+  }
+  
+  .users-table th,
+  .users-table td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .users-table th {
+    background-color: #f5f5f5;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: #333;
+  }
+  
+  .users-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .users-table tr:hover {
+    background-color: #f9f9f9;
+  }
+
+  .revenue-amount{
+    color: #097837;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .users-table {
+      border: 0;
+    }
+  
+    .users-table thead {
+      display: none;
+    }
+  
+    .users-table tr {
+      margin-bottom: 0.625em;
+      display: block;
+      border-bottom: 2px solid #ddd;
+    }
+  
+    .users-table td {
+      display: block;
+      font-size: 0.8em;
+      text-align: right;
+      border-bottom: 1px dotted #ccc;
+    }
+  
+    .users-table td:last-child {
+      border-bottom: 0;
+    }
+  
+    .users-table td::before {
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .dashboard-container {
+      padding: 15px;
+      padding-top: 60px;
+    }
+  
+    .dashboard-title {
+      font-size: 20px;
+    }
+  
+    .dashboard-container nav a {
+      font-size: 11px;
+      margin-right: 15px;
+    }
+  
+    .Adminproduct-grid {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+  
+    .Adminproduct-card {
+      height: 280px;
+    }
+  
+    .Adminproduct-card img {
+      height: 100px;
+    }
+  
+    .Adminproduct-name {
+      font-size: 13px;
+    }
+  
+    .Adminproduct-description,
+    .Adminproduct-price,
+    .Adminproduct-category,
+    .Adminproduct-subcategory {
+      font-size: 11px;
+    }
+  
+    .Adminproduct-actions .action-button {
+      font-size: 10px;
+      padding: 5px 7px;
+    }
+  
+    .modern-form {
+      padding: 15px;
+    }
+  
+    .modern-table th,
+    .modern-table td {
+      padding: 10px;
+    }
+  
+    .total-revenue {
+      font-size: 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .dashboard-container {
+      padding: 10px;
+      padding-top: 50px;
+    }
+  
+    .dashboard-title {
+      font-size: 18px;
+    }
+  
+    .dashboard-container nav {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .dashboard-container nav a {
+      font-size: 10px;
+      margin-right: 0;
+      margin-bottom: 5px;
+    }
+  
+    .Adminproduct-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .Adminproduct-card {
+      height: 260px;
+    }
+  
+    .Adminproduct-card img {
+      height: 90px;
+    }
+  
+    .Adminproduct-name {
+      font-size: 12px;
+    }
+  
+    .Adminproduct-description,
+    .Adminproduct-price,
+    .Adminproduct-category,
+    .Adminproduct-subcategory {
+      font-size: 10px;
+    }
+  
+    .Adminproduct-actions .action-button {
+      font-size: 9px;
+      padding: 4px 6px;
+    }
+  
+    .modern-form input[type="text"],
+    .modern-form input[type="number"],
+    .modern-form input[type="file"],
+    .modern-form textarea,
+    .modern-form select {
+      font-size: 12px;
+    }
+  
+    .modern-table th,
+    .modern-table td {
+      padding: 8px;
+      font-size: 11px;
+    }
+  
+    .total-revenue {
+      font-size: 18px;
+    }
+  }

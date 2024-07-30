@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+.home,
+.dashboard-container,
+.auth-container {
+  margin-top: 60px;
+}
+
+/* CenterPage.module.css */
+
+.centerPageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 60px);
+  padding: 20px;
+  margin-top: 60px;
+}
+
+.centerPageContent {
+  width: 100%;
+  max-width: 600px;
+  padding: 24px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .centerPageContent {
+    padding: 20px;
+  }
+}

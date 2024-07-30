@@ -1,0 +1,266 @@
+/* auth-styles.css */
+
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 60px); /* Subtract navbar height */
+  padding: 20px;
+  background-color: #f3f4f6;
+  
+}
+
+.auth-form {
+  width: 100%;
+  max-width: 340px; /* Slightly reduced max-width */
+  padding: 20px; /* Reduced padding */
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.auth-title {
+  font-size: 18px; /* Reduced from 20px */
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 14px; /* Slightly reduced margin */
+  text-align: center;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 8px; /* Reduced padding */
+  margin-bottom: 10px; /* Reduced margin */
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 13px; /* Reduced from 14px */
+  transition: border-color 0.2s ease;
+}
+
+.auth-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.auth-button {
+  width: 100%;
+  padding: 8px; /* Reduced padding */
+  background-color: #111;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px; /* Reduced from 14px */
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.auth-button:hover {
+  background-color: #111;
+}
+
+.google-button {
+  background-color: #ffffff;
+  color: #333;
+  border: 1px solid #ced4da;
+  margin-top: 10px; /* Reduced margin */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.google-button:hover {
+  background-color: #f8f9fa;
+}
+
+.google-icon {
+  margin-right: 6px; /* Reduced margin */
+}
+
+.auth-link {
+  display: block;
+  margin-top: 10px; /* Reduced margin */
+  text-align: center;
+  color: #111;
+  text-decoration: none;
+  font-size: 11px; /* Reduced from 12px */
+}
+
+.auth-error {
+  color: #dc3545;
+  margin-bottom: 10px; /* Reduced margin */
+  text-align: center;
+  font-size: 11px; /* Reduced from 12px */
+}
+
+.auth-success {
+  color: #28a745;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 11px;
+}
+
+.auth-input-group {
+  display: flex;
+  gap: 10px; /* Reduced gap */
+  margin-bottom: 10px; /* Reduced margin */
+}
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 14px 0; /* Reduced margin */
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #ced4da;
+}
+
+.auth-divider span {
+  padding: 0 8px; /* Reduced padding */
+  color: #6c757d;
+  font-size: 11px; /* Reduced from 12px */
+}
+
+.auth-image-container {
+  width: 100%;
+  max-width: 340px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.auth-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+
+
+/* Add these rules to your existing Auth-styles.css file */
+
+.user-profile {
+  max-width: 600px;
+}
+
+.back-button {
+  width: auto;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  color: #111;
+  padding: 5px 10px;
+}
+
+.button-icon {
+  margin-right: 5px;
+}
+
+.user-info {
+  margin-bottom: 20px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.info-icon {
+  margin-right: 10px;
+  color: #6c757d;
+}
+
+.order-history {
+  margin-top: 20px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.section-icon {
+  margin-right: 10px;
+  color: #6c757d;
+}
+
+.order-list {
+  list-style: none;
+  padding: 0;
+}
+
+.order-item {
+  background-color: #f8f9fa;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.order-id {
+  font-weight: 500;
+}
+
+.order-date {
+  color: #6c757d;
+}
+
+.no-orders {
+  font-style: italic;
+  color: #6c757d;
+}
+
+
+@media (max-width: 768px) {
+  .auth-container {
+    justify-content: flex-start;
+    padding-top: 60px; /* Reduced top padding for mobile */
+  }
+
+  .auth-form {
+    padding: 16px; /* Further reduced padding on mobile */
+    margin-bottom: 30px; /* Reduced bottom margin on mobile */
+  }
+
+  .auth-title {
+    font-size: 16px; /* Reduced from 18px */
+  }
+
+  .auth-input,
+  .auth-button {
+    font-size: 14px; /* Reduced from 16px, but kept slightly larger for mobile readability */
+  }
+
+  .auth-input-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    font-size: 14px; /* Consistent with other inputs on mobile */
+  }
+
+  .auth-image-container {
+    max-width: 280px;
+    margin-bottom: 16px;
+  }
+}
+
+/* For taller mobile screens */
+@media (max-width: 768px) and (min-height: 700px) {
+  .auth-container {
+    justify-content: center;
+    padding-top: 0;
+  }
+}

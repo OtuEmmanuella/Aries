@@ -35,7 +35,7 @@ const Home = () => {
   }
 
   return (
-    <div className="home-page">
+    <main className="home-page">
       <section className="hero full-width">
         <img className='banner' src={gym5} alt="Hero Banner" />
         <div className="hero-content">
@@ -115,7 +115,7 @@ const Home = () => {
           <button type="submit" className="btn btn-primary">Sign Up</button>
         </form>
       </section>
-    </div>
+    </main>
   );
 };
 

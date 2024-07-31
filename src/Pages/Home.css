@@ -16,6 +16,12 @@
   padding-top: var(--navbar-height);
 }
 
+.home-page img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .home-page section {
   margin-bottom: 40px;
   padding: 0 20px;
@@ -108,14 +114,15 @@
   flex: 1 1 calc(50% - 10px);
   min-width: 250px;
   overflow: hidden;
+  min-height: 300px;
+  max-height: 500px;
+  padding-top: 100%;
 }
 
 .home-page .category-item img {
-  width: 100%;
-  height: 100%;
-  min-height: 300px;
-  max-height: 500px;
-  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
   transition: transform 0.3s ease;
 }
 
@@ -128,6 +135,7 @@
   bottom: 20px;
   left: 20px;
   color: var(--secondary-color);
+  z-index: 1;
 }
 
 .home-page .category-content h2 {
@@ -328,6 +336,13 @@
   .home-page .newsletter-form .btn {
     width: 100%;
     max-width: 300px;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .home-page .category-item {
+    padding-top: 40%;
   }
 }
 

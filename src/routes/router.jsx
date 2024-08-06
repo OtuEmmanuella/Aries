@@ -6,8 +6,9 @@ import Signup from '../Components/Auth/Signup';
 import ForgotPassword from '../Components/Auth/ForgotPassword';
 import AdminDashboard from '../Components/Admin/AdminDashboard';
 import UserProfile from '../Components/Auth/UserProfile';
+import ProductListing from '../Pages/Product/ProductListing';
 
-// Import new components for admin dashboard sections
+// Import components for admin dashboard sections
 import ProductsSection from '../Components/Admin/ProductsSection';
 import OrdersSection from '../Components/Admin/OrdersSection';
 import UsersSection from '../Components/Admin/UsersSection';
@@ -36,8 +37,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/admin",
-              element: <AdminDashboard />,
-              children: [
+        element: <AdminDashboard />,
+        children: [
           {
             path: "products",
             element: <ProductsSection />
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <UserProfile />
+      },
+      {
+        path: "/products",
+        element: <ProductListing />
       }
     ]
   }

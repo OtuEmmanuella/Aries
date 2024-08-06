@@ -30,3 +30,226 @@
     height: var(--navbar-height);
     /* Other navbar styles */
   }
+
+
+  .product-listing {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Controls */
+  .controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .filter-button,
+  .view-mode-button {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .filter-button:hover,
+  .view-mode-button:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* Filter Sidebar */
+  .filter-sidebar {
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 250px;
+    position: fixed;
+    top: 80px;
+    bottom: 20px;
+    left: -270px;
+    transition: left 0.3s ease;
+    overflow-y: auto;
+  }
+  
+  .filter-sidebar.show {
+    left: 20px;
+  }
+  
+  .close-filters {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .filter-group {
+    margin-bottom: 20px;
+  }
+  
+  .filter-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+  
+  .filter-group select,
+  .filter-group input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .apply-filters {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .apply-filters:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Product Grid */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  /* Product List */
+  .product-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Product Card */
+  .product-card {
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .product-image {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .product-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  
+  .product-card:hover .product-image img {
+    transform: scale(1.05);
+  }
+  
+  .quick-view-btn {
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    transition: bottom 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .product-card:hover .quick-view-btn {
+    bottom: 0;
+  }
+  
+  .product-info {
+    padding: 15px;
+  }
+  
+  .product-info h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+  
+  .product-description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .product-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .filter-sidebar {
+      position: static;
+      width: 100%;
+      left: 0;
+      margin-bottom: 20px;
+      display: none;
+    }
+  
+    .filter-sidebar.show {
+      display: block;
+    }
+  
+    .product-grid {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+  
+    .product-list .product-card {
+      flex-direction: row;
+    }
+  
+    .product-list .product-image {
+      flex: 0 0 40%;
+    }
+  
+    .product-list .product-info {
+      flex: 1;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .product-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .product-list .product-card {
+      flex-direction: column;
+    }
+  
+    .product-list .product-image {
+      flex: none;
+    }
+  }

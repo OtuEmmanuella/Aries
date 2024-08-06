@@ -32,6 +32,7 @@ const categories = [
 
 const ProductsSection = () => {
   const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [editingProduct, setEditingProduct] = useState(null);
@@ -43,52 +44,95 @@ const ProductsSection = () => {
     subcategory: '',
     imageUrl: '',
   });
-  const [selectedCategory, setSelectedCategory] = useState('');
-  const [selectedSubcategory, setSelectedSubcategory] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
+  const [filters, setFilters] = useState({
+    category: 'all',
+    subcategory: 'all',
+    sortBy: 'name',
+    sortOrder: 'asc',
+    priceRange: { min: 0, max: 1000000 },
+  });
 
   useEffect(() => {
     fetchProducts();
   }, []);
 
+  useEffect(() => {
+    applyFilters();
+  }, [filters, products]);
+
   const fetchProducts = async () => {
+    setLoading(true);
+    setError(null);
     try {
-      const productsCollection = collection(db, 'products');
-      const productsSnapshot = await getDocs(productsCollection);
-      const productsList = productsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      setProducts(productsList);
-      setLoading(false);
-    } catch (err) {
-      console.error("Error fetching products:", err);
+      const querySnapshot = await getDocs(collection(db, 'products'));
+      const productsData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      setProducts(productsData);
+    } catch (error) {
+      console.error('Error fetching products:', error);
       setError('Failed to fetch products. Please try again later.');
+    } finally {
       setLoading(false);
     }
+  };
+
+  const applyFilters = () => {
+    let filtered = [...products];
+
+    // Apply category filter
+    if (filters.category !== 'all') {
+      filtered = filtered.filter(product => product.category === filters.category);
+    }
+
+    // Apply subcategory filter
+    if (filters.subcategory !== 'all') {
+      filtered = filtered.filter(product => product.subcategory === filters.subcategory);
+    }
+
+    // Apply price range filter
+    filtered = filtered.filter(product => 
+      product.price >= filters.priceRange.min && product.price <= filters.priceRange.max
+    );
+
+    // Apply sorting
+    filtered.sort((a, b) => {
+      if (filters.sortBy === 'name') {
+        return filters.sortOrder === 'asc' 
+          ? a.name.localeCompare(b.name)
+          : b.name.localeCompare(a.name);
+      } else if (filters.sortBy === 'price') {
+        return filters.sortOrder === 'asc' 
+          ? a.price - b.price
+          : b.price - a.price;
+      }
+      return 0;
+    });
+
+    setFilteredProducts(filtered);
   };
 
   const handleInputChange = (e, isEditing = false) => {
     const { name, value } = e.target;
+    const updatedValue = name === 'price' ? Number(value) : value;
     if (isEditing) {
-      setEditingProduct({ ...editingProduct, [name]: value });
+      setEditingProduct({ ...editingProduct, [name]: updatedValue });
     } else {
-      setNewProduct({ ...newProduct, [name]: value });
+      setNewProduct({ ...newProduct, [name]: updatedValue });
     }
   };
 
-  const handleCategoryChange = (e) => {
+  const handleCategoryChange = (e, isEditing = false) => {
     const category = e.target.value;
-    setSelectedCategory(category);
-    setSelectedSubcategory('');
-    if (editingProduct) {
+    if (isEditing) {
       setEditingProduct({ ...editingProduct, category, subcategory: '' });
     } else {
       setNewProduct({ ...newProduct, category, subcategory: '' });
     }
   };
 
-  const handleSubcategoryChange = (e) => {
+  const handleSubcategoryChange = (e, isEditing = false) => {
     const subcategory = e.target.value;
-    setSelectedSubcategory(subcategory);
-    if (editingProduct) {
+    if (isEditing) {
       setEditingProduct({ ...editingProduct, subcategory });
     } else {
       setNewProduct({ ...newProduct, subcategory });
@@ -123,12 +167,14 @@ const ProductsSection = () => {
     try {
       const imageUrl = await handleImageUpload(newProduct.category, newProduct.subcategory);
       if (imageUrl) {
-        const productToAdd = { ...newProduct, imageUrl };
+        const productToAdd = { 
+          ...newProduct, 
+          imageUrl,
+          price: Number(newProduct.price)
+        };
         await addDoc(collection(db, 'products'), productToAdd);
         setNewProduct({ name: '', description: '', price: '', category: '', subcategory: '', imageUrl: '' });
         setSelectedFile(null);
-        setSelectedCategory('');
-        setSelectedSubcategory('');
         fetchProducts();
         toast.success('Product added successfully');
       } else {
@@ -143,7 +189,10 @@ const ProductsSection = () => {
   const handleUpdateProduct = async (e) => {
     e.preventDefault();
     try {
-      let updatedProduct = { ...editingProduct };
+      let updatedProduct = { 
+        ...editingProduct,
+        price: Number(editingProduct.price)
+      };
       if (selectedFile) {
         const imageUrl = await handleImageUpload(editingProduct.category, editingProduct.subcategory);
         if (imageUrl) {
@@ -195,71 +244,111 @@ const ProductsSection = () => {
     }
   };
 
-  if (loading) return <div>Loading products...</div>;
-  if (error) return <div>Error: {error}</div>;
-
   return (
     <div className="admin-dashboard">
       <h3 className="dashboard-title">Manage Products</h3>
       
-      <form className="modern-form" onSubmit={editingProduct ? handleUpdateProduct : handleAddProduct}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Product Name"
-          value={editingProduct ? editingProduct.name : newProduct.name}
-          onChange={(e) => handleInputChange(e, !!editingProduct)}
-          required
-        />
-        <textarea
-          name="description"
-          placeholder="Description"
-          value={editingProduct ? editingProduct.description : newProduct.description}
-          onChange={(e) => handleInputChange(e, !!editingProduct)}
-          required
-        />
-        <input
-          type="number"
-          name="price"
-          placeholder="Price"
-          value={editingProduct ? editingProduct.price : newProduct.price}
-          onChange={(e) => handleInputChange(e, !!editingProduct)}
-          required
-        />
+      {/* Filter controls */}
+      <div className="filter-controls">
         <select
-          name="category"
-          value={editingProduct ? editingProduct.category : selectedCategory}
-          onChange={handleCategoryChange}
-          required
+          value={filters.category}
+          onChange={(e) => setFilters({...filters, category: e.target.value, subcategory: 'all'})}
         >
-          <option value="">Select Category</option>
-          {categories.map((cat) => (
+          <option value="all">All Categories</option>
+          {categories.map(cat => (
             <option key={cat.label} value={cat.label}>{cat.label}</option>
           ))}
         </select>
-
-        {selectedCategory && categories.find(cat => cat.label === selectedCategory)?.children && (
+        
+        {filters.category !== 'all' && categories.find(cat => cat.label === filters.category)?.children && (
           <select
-            name="subcategory"
-            value={editingProduct ? editingProduct.subcategory : selectedSubcategory}
-            onChange={handleSubcategoryChange}
-            required
+            value={filters.subcategory}
+            onChange={(e) => setFilters({...filters, subcategory: e.target.value})}
           >
-            <option value="">Select Subcategory</option>
-            {categories.find(cat => cat.label === selectedCategory).children.map((subcat) => (
+            <option value="all">All Subcategories</option>
+            {categories.find(cat => cat.label === filters.category).children.map(subcat => (
               <option key={subcat.label} value={subcat.label}>{subcat.label}</option>
             ))}
           </select>
         )}
-        <input
-          type="file"
-          onChange={handleImageSelect}
-        />
-        <button className="action-button" type="submit">{editingProduct ? 'Update Product' : 'Add Product'}</button>
-      </form>
+        
+        <select
+          value={`${filters.sortBy}-${filters.sortOrder}`}
+          onChange={(e) => {
+            const [sortBy, sortOrder] = e.target.value.split('-');
+            setFilters({...filters, sortBy, sortOrder});
+          }}
+        >
+          <option value="name-asc">Name (A-Z)</option>
+          <option value="name-desc">Name (Z-A)</option>
+          <option value="price-asc">Price (Low to High)</option>
+          <option value="price-desc">Price (High to Low)</option>
+        </select>
+      </div>
 
+      {/* Product form */}
+      <form className="modern-form" onSubmit={editingProduct ? handleUpdateProduct : handleAddProduct}>
+  <input
+    type="text"
+    name="name"
+    value={editingProduct ? editingProduct.name : newProduct.name}
+    onChange={(e) => handleInputChange(e, !!editingProduct)}
+    placeholder="Product Name"
+    required
+  />
+  <textarea
+    name="description"
+    value={editingProduct ? editingProduct.description : newProduct.description}
+    onChange={(e) => handleInputChange(e, !!editingProduct)}
+    placeholder="Product Description"
+    required
+  />
+  <input
+    type="number"
+    name="price"
+    value={editingProduct ? editingProduct.price : newProduct.price}
+    onChange={(e) => handleInputChange(e, !!editingProduct)}
+    placeholder="Price"
+    required
+  />
+  <select
+    name="category"
+    value={editingProduct ? editingProduct.category : newProduct.category}
+    onChange={(e) => handleCategoryChange(e, !!editingProduct)}
+    required
+  >
+    <option value="">Select Category</option>
+    {categories.map(cat => (
+      <option key={cat.label} value={cat.label}>{cat.label}</option>
+    ))}
+  </select>
+  {(editingProduct ? editingProduct.category : newProduct.category) && 
+   categories.find(cat => cat.label === (editingProduct ? editingProduct.category : newProduct.category))?.children && (
+    <select
+      name="subcategory"
+      value={editingProduct ? editingProduct.subcategory : newProduct.subcategory}
+      onChange={(e) => handleSubcategoryChange(e, !!editingProduct)}
+      required
+    >
+      <option value="">Select Subcategory</option>
+      {categories.find(cat => cat.label === (editingProduct ? editingProduct.category : newProduct.category)).children.map(subcat => (
+        <option key={subcat.label} value={subcat.label}>{subcat.label}</option>
+      ))}
+    </select>
+  )}
+  <input
+    type="file"
+    onChange={handleImageSelect}
+    accept="image/*"
+  />
+  <button type="submit">
+    {editingProduct ? 'Update Product' : 'Add Product'}
+  </button>
+</form>
+      
+      {/* Product grid */}
       <div className="Adminproduct-grid">
-        {products.map(product => (
+        {filteredProducts.map(product => (
           <div key={product.id} className="Adminproduct-card">
             <img src={product.imageUrl} alt={product.name} />
             <div className="Adminproduct-info">
@@ -278,6 +367,9 @@ const ProductsSection = () => {
           </div>
         ))}
       </div>
+      
+      {loading && <div>Loading...</div>}
+      {error && <div>Error: {error}</div>}
     </div>
   );
 };

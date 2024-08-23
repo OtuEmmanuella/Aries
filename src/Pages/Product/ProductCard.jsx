@@ -1,6 +1,15 @@
 import React from 'react';
 import './ProductCard.css';
 
+const formatPrice = (price) => {
+  return price.toLocaleString('en-NG', {
+    style: 'currency',
+    currency: 'NGN',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+};
+
 const ProductCard = ({ product, viewMode }) => {
   return (
     <div className={`product-card ${viewMode}`}>
@@ -11,7 +20,7 @@ const ProductCard = ({ product, viewMode }) => {
       <div className="product-info">
         <h3>{product.name}</h3>
         <p className="product-description">{product.description}</p>
-        <p className="product-price">₦{product.price.toFixed(2)}</p>
+        <p className="product-price">{formatPrice(product.price)}</p>
       </div>
     </div>
   );

@@ -1,0 +1,184 @@
+.productGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px; 
+    padding: 2px; 
+  }
+  
+  .productCard {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 100%; 
+  }
+  
+  .imageContainer {
+    position: relative;
+    padding-top: 133.33%; 
+  }
+  
+  .productImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .newBadge {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-size: 10px;
+  }
+  
+  .wishlistButton {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: none;
+    border: none;
+    color: rgb(150, 143, 143);
+    cursor: pointer;
+    padding: 4px;
+  }
+  
+  .productInfo {
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  .productName {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #666;
+  }
+  
+  .productCategory {
+    font-size: 10px;
+    color: #666;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .priceContainer {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin-top: auto;
+  }
+  
+  .price, .discountedPrice {
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  .discountedPrice {
+    color: #e74c3c;
+  }
+  
+  .originalPrice {
+    font-size: 10px;
+    color: #666;
+    text-decoration: line-through;
+  }
+  
+  .ratingContainer {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin-top: 2px;
+  }
+  
+  .starIcon {
+    color: #ffc107;
+    width: 12px;
+    height: 12px;
+  }
+  
+  .ratingValue {
+    font-size: 10px;
+    font-weight: bold;
+  }
+
+
+  .productDescription {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 0.5em;
+  }
+  
+  .compareAtPrice {
+    font-size: 0.9em;
+    color: #888;
+    text-decoration: line-through;
+    margin-bottom: 0.5em;
+  }
+  
+  /* Media query for larger screens */
+  @media (min-width: 768px) {
+    .productGrid {
+      gap: 16px;
+      padding: 16px;
+    }
+  
+    .newBadge {
+      top: 8px;
+      left: 8px;
+      padding: 4px 8px;
+      font-size: 12px;
+    }
+  
+    .wishlistButton {
+      top: 8px;
+      right: 8px;
+    }
+  
+    .productInfo {
+      padding: 12px;
+    }
+  
+    .productName {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+  
+    .productCategory {
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+  
+    .price, .discountedPrice {
+      font-size: 16px;
+    }
+  
+    .originalPrice {
+      font-size: 14px;
+    }
+  
+    .ratingValue {
+      font-size: 12px;
+    }
+  
+    .starIcon {
+      width: 16px;
+      height: 16px;
+    }
+  }

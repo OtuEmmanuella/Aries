@@ -1,0 +1,161 @@
+/* ProductGrid.module.css */
+.productGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .loading {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.2rem;
+    color: #666;
+  }
+  
+  .error {
+    text-align: center;
+    padding: 2rem;
+    color: #e53e3e;
+    font-size: 1.2rem;
+  }
+  
+  .noProducts {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    font-size: 1.2rem;
+  }
+  
+  /* ProductCard.module.css updates */
+  .productCard {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+    background: white;
+  }
+  
+  .productCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 
+                0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  .imageContainer {
+    position: relative;
+    padding-top: 100%; /* 1:1 Aspect Ratio */
+    overflow: hidden;
+  }
+  
+  .productImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .imageContainer:hover .productImage {
+    transform: scale(1.05);
+  }
+  
+  .noImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f7fafc;
+    color: #a0aec0;
+  }
+  
+  .productInfo {
+    padding: 1rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .productName {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1a202c;
+    margin-bottom: 0.5rem;
+  }
+  
+  .productCategory {
+    font-size: 0.875rem;
+    color: #718096;
+    margin-bottom: 0.5rem;
+  }
+  
+  .priceContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .price {
+    font-weight: 600;
+    color: #2d3748;
+  }
+  
+  .compareAtPrice {
+    text-decoration: line-through;
+    color: #a0aec0;
+    font-size: 0.875rem;
+  }
+  
+  .discountBadge {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background-color: #e53e3e;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  
+  .wishlistButton {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    background: white;
+    border: none;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+  
+  .wishlistButton:hover {
+    transform: scale(1.1);
+  }
+  
+  .productDescription {
+    font-size: 0.875rem;
+    color: #4a5568;
+    margin-top: 0.5rem;
+    display: -webkit-box;
+    /* -webkit-line-clamp: 2; */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }

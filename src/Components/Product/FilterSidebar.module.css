@@ -1,0 +1,113 @@
+.filterSidebar {
+  font-family: 'Montserrat', sans-serif;
+  width: 250px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-right: 1px solid #e0e0e0;
+  height: 100vh;
+  overflow-y: auto;
+  position: sticky;
+  top: 0;
+  left: 0;
+  transition: transform 0.3s ease-in-out;
+  margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+  .filterSidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    z-index: 1000;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .filterSidebar.show {
+    transform: translateX(250px);
+  }
+}
+
+.filterTitle {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.filterSection {
+  margin-bottom: 20px;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.sectionHeader h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  color: #333;
+}
+
+.sectionContent {
+  margin-top: 10px;
+}
+
+.filterOption {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.filterOption input[type="radio"] {
+  margin-right: 10px;
+}
+
+.select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.closeFilters {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .closeFilters {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+  }
+}
+
+.applyFilters {
+  width: 100%;
+  padding: 12px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.applyFilters:hover {
+  background-color: #333;
+}

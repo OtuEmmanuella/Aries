@@ -4,6 +4,7 @@ import { FiMenu, FiSearch, FiUser, FiShoppingCart, FiArrowLeft, FiSettings } fro
 import { FaTshirt } from 'react-icons/fa';
 import { PiPantsFill, PiSneakerMoveFill } from "react-icons/pi"; 
 import { GiBilledCap } from "react-icons/gi";
+import { GiSandal } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
 import { IoIosArrowDown } from "react-icons/io";
 import { SlHandbag } from "react-icons/sl";
@@ -17,55 +18,194 @@ const logo = "/Aries Logo.gif";
 const navItems = [
   {
     label: "MEN",
-    link: "#",
+    link: "/products?category=men",
     children: [
       {
         label: "Shirts",
-        link: "#",
+        link: "/products?category=men&subcategory=shirts",
         icon: FaTshirt,
       },
       {
         label: "Pants",
-        link: "#",
+        link: "/products?category=men&subcategory=pants",
         icon: PiPantsFill,
       },
       {
         label: "Sneakers",
-        link: "#",
+        link: "/products?category=men&subcategory=sneakers",
         icon: PiSneakerMoveFill,
       },
       {
         label: "Caps",
-        link: "#",
+        link: "/products?category=men&subcategory=caps",
         icon: GiBilledCap,
+      },
+      {
+        label: "Shorts",
+        link: "/products?category=men&subcategory=shorts",
+        icon: PiPantsFill,
       },
     ],
   },
   {
     label: "WOMEN",
-    link: "#",
+    link: "/products?category=women",
     children: [
       {
         label: "Bags",
-        link: "#",
+        link: "/products?category=women&subcategory=bags",
+        icon: SlHandbag,
       },
       {
-        label: "Beauty",
-        link: "#",
+        label: "Accessories",
+        link: "/products?category=women&subcategory=accessories",
       },
       {
-        label: "Dress",
-        link: "#",
+        label: "Dresses",
+        link: "/products?category=women&subcategory=dresses",
+        icon: FaTshirt,
       },
     ],
   },
   {
-    label: "SUITS",
-    link: "#",
+    label: "FOOTWEAR",
+    link: "/products?category=footwear",
+    children: [
+      {
+        label: "Sneakers",
+        link: "/products?category=footwear&subcategory=sneakers",
+        icon: PiSneakerMoveFill,
+      },
+      {
+        label: "Sandals",
+        link: "/products?category=footwear&subcategory=sandals",
+        icon: GiSandal,
+      },
+      {
+        label: "Boots",
+        link: "/products?category=footwear&subcategory=boots",
+      },
+    ],
   },
   {
-    label: "T-Shirts",
-    link: "#",
+    label: "Beauty",
+    link: "/products?category=beauty",
+    children: [
+      {
+        label: "Makeup",
+        link: "/products?category=beauty&subcategory=makeup",
+        children: [
+          {
+            label: "Face",
+            link: "/products?category=beauty&subcategory=makeup&type=face",
+          },
+          {
+            label: "Eyes",
+            link: "/products?category=beauty&subcategory=makeup&type=eyes",
+          },
+          {
+            label: "Lips",
+            link: "/products?category=beauty&subcategory=makeup&type=lips",
+          },
+        ],
+      },
+      {
+        label: "Skincare",
+        link: "/products?category=beauty&subcategory=skincare",
+        children: [
+          {
+            label: "Cleansers",
+            link: "/products?category=beauty&subcategory=skincare&type=cleansers",
+          },
+          {
+            label: "Moisturizers",
+            link: "/products?category=beauty&subcategory=skincare&type=moisturizers",
+          },
+          {
+            label: "Sunscreens",
+            link: "/products?category=beauty&subcategory=skincare&type=sunscreens",
+          },
+        ],
+      },
+      {
+        label: "Hair Care",
+        link: "/products?category=beauty&subcategory=haircare",
+        children: [
+          {
+            label: "Shampoos",
+            link: "/products?category=beauty&subcategory=haircare&type=shampoos",
+          },
+          {
+            label: "Conditioners",
+            link: "/products?category=beauty&subcategory=haircare&type=conditioners",
+          },
+          {
+            label: "Styling Products",
+            link: "/products?category=beauty&subcategory=haircare&type=styling",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    label: "Gadgets",
+    link: "/products?category=gadgets",
+    children: [
+      {
+        label: "Apple",
+        link: "/products?category=gadgets&brand=apple",
+        children: [
+          {
+            label: "MacBooks",
+            link: "/products?category=gadgets&brand=apple&type=macbooks",
+          },
+          {
+            label: "Phones",
+            link: "/products?category=gadgets&brand=apple&type=phones",
+          },
+          {
+            label: "Airpods",
+            link: "/products?category=gadgets&brand=apple&type=airpods",
+          },
+          {
+            label: "Watch",
+            link: "/products?category=gadgets&brand=apple&type=watch",
+          },
+          {
+            label: "Vision",
+            link: "/products?category=gadgets&brand=apple&type=vision",
+          },
+          {
+            label: "iPads",
+            link: "/products?category=gadgets&brand=apple&type=ipad",
+          },
+        ],
+      },
+      {
+        label: "Samsung",
+        link: "/products?category=gadgets&brand=samsung",
+        children: [
+          {
+            label: "Laptops",
+            link: "/products?category=gadgets&brand=samsung&type=laptops",
+          },
+          {
+            label: "Phones",
+            link: "/products?category=gadgets&brand=samsung&type=phones",
+          },
+        ],
+      },
+      {
+        label: "HP",
+        link: "/products?category=gadgets&brand=hp",
+        children: [
+          {
+            label: "PCs",
+            link: "/products?category=gadgets&brand=hp&type=laptops",
+          },
+        ],
+      },
+    ],
   },
 ];
 
@@ -117,7 +257,6 @@ function Navbar() {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
       if (user) {
         setIsLoggedIn(true);
-        // Check if the user's email matches the admin email
         if (user.email === 'admin@example.com') {
           setIsAdmin(true);
         } else {
@@ -163,7 +302,9 @@ function Navbar() {
     <div className={`navbar ${isSearchOpen && windowWidth < 768 ? 'search-active' : ''}`}>
       <div className="navbar-content">
         <section ref={animationParent} className="navbar-left">
-          <img src={logo} alt="logo" className="logo" />
+        <Link to="/">
+           <img src={logo} alt="logo" className="logo" />
+       </Link>
           {windowWidth >= 768 && (
             <div className="nav-items">
               {navItems.map((item, index) => (
@@ -272,23 +413,23 @@ function Navbar() {
 function NavItem({ item }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  function toggleDropdown() {
-    setIsOpen(!isOpen);
-  }
-
   return (
-    <div className="nav-item" onClick={toggleDropdown}>
-      <p className="nav-item-label">
+    <div className="nav-item" onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>
+      <Link to={item.link} className="nav-item-label">
         <span>{item.label}</span>
         {item.children && <IoIosArrowDown className={`arrow-icon ${isOpen ? 'open' : ''}`} />}
-      </p>
-      {(isOpen || window.innerWidth >= 768) && item.children && (
+      </Link>
+      {isOpen && item.children && (
         <div className="dropdown">
           {item.children.map((child, index) => (
-            <Link key={index} to={child.link ?? "#"} className="dropdown-item">
-              {child.icon && <child.icon className='icon-image' />}
-              <span className="dropdown-item-label">{child.label}</span>
-            </Link>
+            child.children ? (
+              <NavItem key={index} item={child} />
+            ) : (
+              <Link key={index} to={child.link} className="dropdown-item">
+                {child.icon && <child.icon className='icon-image' />}
+                <span className="dropdown-item-label">{child.label}</span>
+              </Link>
+            )
           ))}
         </div>
       )}
@@ -323,8 +464,8 @@ function SingleNavItem({ label, children, link }) {
   }
 
   return (
-    <div ref={animationParent} onClick={toggleItem} className="single-nav-item">
-      <p className="single-nav-item-label">
+    <div ref={animationParent} className="single-nav-item">
+      <p className="single-nav-item-label" onClick={toggleItem}>
         <span>{label}</span>
         {children && (
           <IoIosArrowDown className={`arrow-icon ${isItemOpen ? "open" : ""}`} />
@@ -333,10 +474,14 @@ function SingleNavItem({ label, children, link }) {
       {isItemOpen && children && (
         <div className="single-nav-item-dropdown">
           {children.map((child, index) => (
-            <Link key={index} to={child.link ?? "#"} className="single-nav-item-dropdown-item">
-              {child.icon && <child.icon className='icon-image' />}
-              <span className="single-nav-item-dropdown-item-label">{child.label}</span>
-            </Link>
+            child.children ? (
+              <SingleNavItem key={index} {...child} />
+            ) : (
+              <Link key={index} to={child.link ?? "#"} className="single-nav-item-dropdown-item">
+                {child.icon && <child.icon className='icon-image' />}
+                <span className="single-nav-item-dropdown-item-label">{child.label}</span>
+              </Link>
+            )
           ))}
         </div>
       )}

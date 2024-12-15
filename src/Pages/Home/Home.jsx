@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'; 
 import './Home.css';
-import SkeletonLoader from '.././Components/SkeletonLoaders/HomeSkeletonLoader';
+import SkeletonLoader from '../../Components/SkeletonLoaders/HomeSkeletonLoader';
 
 import banner from '/public/Black White Simple Fashion Sale Banner Landscape.gif'
 import gym1 from '/public/gym.png'
@@ -40,7 +40,7 @@ const Home = () => {
         <img className='banner' src={gym5} alt="Hero Banner" />
         <div className="hero-content">
           <h1>New Arrivals</h1>
-          <Link to="/new-collection" className="btn btn-primary">Shop Now</Link>
+          <Link to="/products" className="btn btn-primary">Shop Now</Link>
         </div>
       </section>
 
@@ -49,14 +49,14 @@ const Home = () => {
           <img src={gym4} alt="Men's Collection" />
           <div className="category-content">
             <h2>Men's Collection</h2>
-            <Link to="/men" className="btn btn-secondary">Shop Men</Link>
+            <Link to="/products?category=men" className="btn btn-secondary">Shop Men</Link>
           </div>
         </div>
         <div className="category-item">
           <img src={gym3} alt="Women's Collection" />
           <div className="category-content">
             <h2>Women's Collection</h2>
-            <Link to="/women" className="btn btn-secondary">Shop Women</Link>
+            <Link to="/products?category=women" className="btn btn-secondary">Shop Women</Link>
           </div>
         </div>
       </section>
